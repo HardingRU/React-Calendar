@@ -7,6 +7,7 @@ import {
 
 import App from './App';
 import Calendar from './components/CalendarView'
+import AddEvent from './components/AddEvent'
 
 
 export default (
@@ -14,6 +15,7 @@ export default (
     <Switch>
       <Route exact path="/" component={App}/>
       <Route exact path="/calendar" component={Calendar}/>
+      <Route exact path="/addEvent" component={AddEvent}/>
     </Switch>
   </Router>
 )

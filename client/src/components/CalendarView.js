@@ -16,7 +16,8 @@ class CalendarView extends Component {
       {
         start: new Date(),
         end: new Date(moment().add(1, "days")),
-        title: "Some title"
+        title: "Some title",
+        id: 1
       }
     ]
     }
@@ -31,10 +32,19 @@ class CalendarView extends Component {
       <div>
         <h1>Calendar Page</h1>
         <Calendar
+          selectable
           defaultDate={new Date()}
           defaultView="month"
           events={this.state.events}
           style={{ height: "100vh" }}
+          onSelectEvent={event => alert(event.id)}
+          onSelectSlot={slotInfo =>
+            alert(
+              `selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
+              `\nend: ${slotInfo.end.toLocaleString()}` +
+              `\naction: ${slotInfo.action}`
+            )
+        }
         />
       </div>
     )
