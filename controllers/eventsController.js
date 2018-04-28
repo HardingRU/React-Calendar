@@ -15,4 +15,17 @@ eventsController.addEvent = (req, res) => {
     })
 }
 
+eventsController.getEvents = (req, res) => {
+  Events.getEvents()
+    .then(events => {
+      res.json({
+        message: 'ok',
+        data: {events}
+      })
+    })
+    .catch(err => {
+      res.status(400).json({message: '400', err})
+    })
+}
+
 module.exports = eventsController;
