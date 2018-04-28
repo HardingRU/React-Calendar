@@ -7,7 +7,6 @@ import moment from "moment";
 
 Calendar.setLocalizer(Calendar.momentLocalizer(moment));
 
-
 class CalendarView extends Component {
   constructor() {
     super();
@@ -20,8 +19,6 @@ class CalendarView extends Component {
   }
 
   aggregateDates(events) {
-    console.log("in agg")
-    console.log(events)
     let allEvents = []
     for (let i = 0; i < events.length; i++) {
       let tempDate = {}
@@ -34,7 +31,6 @@ class CalendarView extends Component {
       tempDate.start = new Date(startDateArray[0], startDateArray[1], startDateArray[2], startTimeArray[0], startTimeArray[1])
       tempDate.end = new Date(endDateArray[0], endDateArray[1], endDateArray[2], endTimeArray[0], endTimeArray[1])
       allEvents.push(tempDate)
-      console.log(tempDate)
     }
     this.setState({
       events: allEvents,
@@ -45,7 +41,6 @@ class CalendarView extends Component {
   componentDidMount() {
     Services.getEvents()
     .then(events => {
-      console.log(events.data.data.events)
       this.aggregateDates(events.data.data.events)
     })
     .catch(err => {
@@ -78,10 +73,10 @@ class CalendarView extends Component {
 
   render() {
     return (
-
       <div> {this.state.apiDataLoaded ? this.renderCalendar() : <h1>Loading...</h1>} </div>
     )
   }
+
 }
 
 export default CalendarView
