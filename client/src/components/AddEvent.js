@@ -31,8 +31,8 @@ class AddEvent extends Component {
   handleFormSubmit(e) {
     e.preventDefault();
       let addData = {};
-      addData.start = this.state.start;
-      addData.end = this.state.end;
+      addData.start_date = this.state.start;
+      addData.end_date = this.state.end;
       addData.title = this.state.title;
 
       Services.addEvent(addData)
@@ -43,6 +43,7 @@ class AddEvent extends Component {
         })
       })
       .catch(err => {
+        console.log("caughting")
         console.log(err);
       })
       console.log("Date Added ->",addData)
